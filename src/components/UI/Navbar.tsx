@@ -38,9 +38,9 @@ const Navbar: React.FC = () => {
                 <Link to="/courses" className="text-gray-700 hover:text-teal-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">{t.discover}</Link>
                 <Link to="/programs" className="text-gray-700 hover:text-teal-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">{t.programs}</Link>
                 <Link to="/about" className="text-gray-700 hover:text-teal-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">{t.about}</Link>
-                <Link to="/Tech" className="text-gray-700 hover:text-teal-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">{t.Tech}</Link>
+               
                 <Link to="/AiChatBot" className="text-gray-700 hover:text-teal-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">{t.AiChatBot}</Link>
-                <Link to="/Admin" className="text-gray-700 hover:text-teal-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">{t.Admin}</Link>
+                
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
             <Link to="/courses" className="block py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">{t.discover}</Link>
             <Link to="/programs" className="block py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">{t.programs}</Link>
             <Link to="/about" className="block py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">{t.about}</Link>
-            <Link to="/Tech" className="block py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">{t.Tech}</Link>
+            
             <Link to="/AiChatBot" className="block py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">{t.AiChatBot}</Link>
           </div>
 

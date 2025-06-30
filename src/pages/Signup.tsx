@@ -18,8 +18,7 @@ const Signup: React.FC = () => {
     username: "",
     mobileNumber: "",
     birthDate: "",
-    role: "Student", // يجب أن يكون 'Student' أو 'Teacher' بالحرف الكبير
-    specialties: [{ specialtyId: 1 }],
+    type: "Student", // Student | Teacher | Admin
     terms: false,
   });
 
@@ -38,14 +37,17 @@ const Signup: React.FC = () => {
       lastName: formData.lastName,
       mobileNumber: formData.mobileNumber,
       birthDate: formData.birthDate,
-      type: formData.role,
-      specialties: formData.specialties,
+      type: formData.type,
+      roles: [formData.type], // أرسل الدور كمصفوفة لأن الـ API يتوقعه
     };
 
-    console.log("Payload to API:", payload); // ✅ هنا
+    console.log("🚀 Payload:", payload);
 
     try {
-      await axios.post(
+      setLoading(true);
+      setMessage("");
+
+      const response = await axios.post(
         "https://raghadsvu-001-site1.jtempurl.com/api/Users/signup",
         payload,
         {
@@ -56,19 +58,25 @@ const Signup: React.FC = () => {
         }
       );
 
+      console.log("✅ Success:", response.data);
       setMessage(t.signupPage.successMessage || "تم التسجيل بنجاح");
       navigate("/login");
     } catch (error: any) {
-      console.error("Signup error:", error);
+      console.error("❌ Error:", error);
 
+      // إذا فيه رد من الـ API فيه تفاصيل الخطأ أظهرها
       if (error.response) {
-        console.log("❌ API Error Response:", error.response.data); // ✅ اطبع محتوى الخطأ
-        setMessage(
-          error.response.data.message || "فشل في التسجيل، تحقق من البيانات."
-        );
+        console.log("API Error Response:", error.response.data);
+        const backendMessage =
+          error.response.data.message ||
+          error.response.data.title ||
+          "فشل في التسجيل، تحقق من البيانات المدخلة.";
+        setMessage(backendMessage);
       } else {
-        setMessage("فشل في الاتصال بالخادم. حاول لاحقًا.");
+        setMessage("تعذر الاتصال بالخادم. حاول لاحقًا.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,7 +106,7 @@ const Signup: React.FC = () => {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
-            {/* الاسم الأول والكنية */}
+            {/* First & Last Name */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label
@@ -142,7 +150,7 @@ const Signup: React.FC = () => {
               </div>
             </div>
 
-            {/* البريد الإلكتروني */}
+            {/* Email */}
             <div>
               <label
                 htmlFor="email"
@@ -163,7 +171,8 @@ const Signup: React.FC = () => {
                 onChange={handleChange}
               />
             </div>
-            {/*  اسم المستخدم */}
+
+            {/* Username */}
             <div>
               <label
                 htmlFor="username"
@@ -176,7 +185,7 @@ const Signup: React.FC = () => {
                 name="username"
                 type="text"
                 required
-                className={`appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm ${
+                className={`appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm ${
                   isRTL ? "text-right" : "text-left"
                 }`}
                 placeholder={t.signupPage.usernamePlaceholder || "اسم المستخدم"}
@@ -185,7 +194,7 @@ const Signup: React.FC = () => {
               />
             </div>
 
-            {/* رقم الجوال */}
+            {/* Mobile */}
             <div>
               <label
                 htmlFor="mobileNumber"
@@ -197,7 +206,6 @@ const Signup: React.FC = () => {
                 id="mobileNumber"
                 name="mobileNumber"
                 type="text"
-                required
                 className={`appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm ${
                   isRTL ? "text-right" : "text-left"
                 }`}
@@ -207,7 +215,7 @@ const Signup: React.FC = () => {
               />
             </div>
 
-            {/* كلمة المرور */}
+            {/* Password */}
             <div>
               <label
                 htmlFor="password"
@@ -229,7 +237,7 @@ const Signup: React.FC = () => {
               />
             </div>
 
-            {/* تأكيد كلمة المرور */}
+            {/* Confirm Password */}
             <div>
               <label
                 htmlFor="confirmPassword"
@@ -251,7 +259,7 @@ const Signup: React.FC = () => {
               />
             </div>
 
-            {/* تاريخ الميلاد */}
+            {/* Birth Date */}
             <div>
               <label
                 htmlFor="birthDate"
@@ -263,7 +271,6 @@ const Signup: React.FC = () => {
                 id="birthDate"
                 name="birthDate"
                 type="date"
-                required
                 className={`appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm ${
                   isRTL ? "text-right" : "text-left"
                 }`}
@@ -272,7 +279,7 @@ const Signup: React.FC = () => {
               />
             </div>
 
-            {/* الدور (الطالب / المدرس) */}
+            {/* Role */}
             <div>
               <label
                 htmlFor="type"
@@ -292,11 +299,12 @@ const Signup: React.FC = () => {
               >
                 <option value="Student">{t.signupPage.student}</option>
                 <option value="Teacher">{t.signupPage.teacher}</option>
+                <option value="Admin">{t.signupPage.admin}</option>
               </select>
             </div>
           </div>
 
-          {/* الشروط */}
+          {/* Terms */}
           <div className="flex items-center">
             <input
               id="terms"
@@ -317,17 +325,23 @@ const Signup: React.FC = () => {
             </label>
           </div>
 
-          {/* زر التسجيل */}
+          {/* Submit */}
           <div>
             <button
               type="submit"
+              disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
             >
-              {t.signupPage.signUp}
+              {loading ? "جاري الإرسال..." : t.signupPage.signUp}
             </button>
           </div>
 
-          {/* رابط تسجيل الدخول */}
+          {/* API Message */}
+          {message && (
+            <div className="text-center text-red-600 text-sm">{message}</div>
+          )}
+
+          {/* Login Link */}
           <div className="text-center text-sm">
             <span className="text-gray-600">
               {t.signupPage.alreadyHaveAccount}

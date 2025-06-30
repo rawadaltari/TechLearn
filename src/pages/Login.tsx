@@ -22,15 +22,32 @@ const Login: React.FC = () => {
     e.preventDefault();
     setError('');
     setLoading(true);
-
+  
+    // تحقق إذا كان المستخدم هو المدير
+    if (
+      formData.username === 'admin@eduplatform.com' &&
+      formData.password === 'Admin@123'
+    ) {
+      // حفظ بيانات المدير في التخزين المحلي إذا أردت
+      localStorage.setItem(
+        'user',
+        JSON.stringify({ role: 'admin', email: formData.username })
+      );
+  
+      navigate('/Admin'); // غير المسار حسب اسم واجهة المدير لديك
+      setLoading(false);
+      return;
+    }
+  
+    // تسجيل الدخول للمستخدمين العاديين
     const success = await login(formData.username, formData.password);
-
+  
     if (success) {
       const storedUser = localStorage.getItem('user');
       if (storedUser) {
         const user = JSON.parse(storedUser);
         console.log('User role:', user.role);
-
+  
         if (user.role === 'teacher') {
           navigate('/Tech');
         } else if (user.role === 'student') {
@@ -44,9 +61,10 @@ const Login: React.FC = () => {
     } else {
       setError('فشل تسجيل الدخول. تأكد من صحة اسم المستخدم وكلمة المرور.');
     }
-
+  
     setLoading(false);
   };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
