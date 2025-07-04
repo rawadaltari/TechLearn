@@ -43,196 +43,287 @@ const courses: Course[] = [
   {
     id: '1',
     title: {
-      ar: 'رحلة التحول الرقمي: انطلق بشركتك نحو المستقبل',
-      en: 'Digital Transformation Journey: Launch Your Company to the Future'
+      ar: 'مقدمة في شبكات الحاسوب',
+      en: 'Introduction to Computer Networks'
     },
     description: {
-      ar: 'تعلم استراتيجيات التحول الرقمي وقيادة شركتك نحو المستقبل',
-      en: 'Learn digital transformation strategies and lead your company to the future'
-    },
-    duration: {
-      ar: '8 أسابيع',
-      en: '8 weeks'
-    },
-    level: {
-      ar: 'تعلم ذاتي',
-      en: 'Self-paced'
-    },
-    learners: 1500,
-    rating: 4.8,
-    image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400',
-    gradient: 'from-slate-600 to-slate-800',
-    iconColor: 'text-orange-400',
-    price: {
-      original: 299,
-      discounted: 199,
-      currency: {
-        ar: 'ر.س',
-        en: '$'
-      }
-    },
-    features: {
-      ar: [
-        'محتوى فيديو عالي الجودة لمدة 12 ساعة',
-        'مواد تدريبية قابلة للتحميل',
-        'شهادة إتمام معتمدة',
-        'وصول مدى الحياة للمحتوى',
-        'دعم فني على مدار الساعة'
-      ],
-      en: [
-        '12 hours of high-quality video content',
-        'Downloadable training materials',
-        'Certified completion certificate',
-        'Lifetime access to content',
-        '24/7 technical support'
-      ]
-    }
-  },
-  {
-    id: '2',
-    title: {
-      ar: 'تقييم الأثر: من التصميم إلى التأثير والتوثيق',
-      en: 'Impact Assessment: From Design to Documentation'
-    },
-    description: {
-      ar: 'دورة شاملة لتعلم تقييم وتوثيق الأثر في المشاريع',
-      en: 'Comprehensive course on impact assessment and documentation'
-    },
-    duration: {
-      ar: '12 أسابيع',
-      en: '12 weeks'
-    },
-    level: {
-      ar: 'متوسط',
-      en: 'Intermediate'
-    },
-    learners: 1000,
-    rating: 4.7,
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400',
-    gradient: 'from-green-400 to-green-600',
-    iconColor: 'text-red-400',
-    price: {
-      original: 399,
-      discounted: 249,
-      currency: {
-        ar: 'ر.س',
-        en: '$'
-      }
-    },
-    features: {
-      ar: [
-        'محتوى فيديو لمدة 18 ساعة',
-        'قوالب وأدوات تقييم الأثر',
-        'دراسات حالة عملية',
-        'جلسات تفاعلية مباشرة',
-        'مجتمع المتعلمين الحصري'
-      ],
-      en: [
-        '18 hours of video content',
-        'Impact assessment templates and tools',
-        'Practical case studies',
-        'Live interactive sessions',
-        'Exclusive learner community'
-      ]
-    }
-  },
-  {
-    id: '3',
-    title: {
-      ar: 'كيف تبدأ وتدير مشروعاً ناجحاً',
-      en: 'How to Start and Manage a Successful Project'
-    },
-    description: {
-      ar: 'تعلم أساسيات إدارة المشاريع وتطبيق أفضل الممارسات',
-      en: 'Learn project management fundamentals and best practices'
-    },
-    duration: {
-      ar: '4 أسابيع',
-      en: '4 weeks'
-    },
-    level: {
-      ar: 'سهل',
-      en: 'Easy'
-    },
-    learners: 28900,
-    rating: 4.9,
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    gradient: 'from-blue-500 to-purple-600',
-    iconColor: 'text-yellow-400',
-    price: {
-      original: 199,
-      discounted: 99,
-      currency: {
-        ar: 'ر.س',
-        en: '$'
-      }
-    },
-    features: {
-      ar: [
-        'محتوى فيديو لمدة 8 ساعات',
-        'أدوات إدارة المشاريع',
-        'قوالب التخطيط والتنفيذ',
-        'اختبارات تفاعلية',
-        'شهادة إتمام'
-      ],
-      en: [
-        '8 hours of video content',
-        'Project management tools',
-        'Planning and execution templates',
-        'Interactive quizzes',
-        'Completion certificate'
-      ]
-    }
-  },
-  {
-    id: '4',
-    title: {
-      ar: 'إدارة الموارد البشرية الحديثة',
-      en: 'Modern Human Resource Management'
-    },
-    description: {
-      ar: 'استراتيجيات متقدمة في إدارة الموارد البشرية',
-      en: 'Advanced strategies in human resource management'
+      ar: 'تعرف على أساسيات شبكات الحاسوب وتقنياتها',
+      en: 'Learn the basics of computer networks and technologies'
     },
     duration: {
       ar: '6 أسابيع',
       en: '6 weeks'
     },
     level: {
-      ar: 'متقدم',
-      en: 'Advanced'
+      ar: 'مبتدئ',
+      en: 'Beginner'
     },
-    learners: 2200,
-    rating: 4.6,
-    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400',
-    gradient: 'from-purple-500 to-pink-600',
-    iconColor: 'text-green-400',
+    learners: 1200,
+    rating: 4.5,
+    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=400',
+    gradient: 'from-blue-500 to-blue-700',
+    iconColor: 'text-blue-400',
     price: {
-      original: 349,
-      discounted: 229,
+      original: 150000,
+      discounted: 100000,
       currency: {
-        ar: 'ر.س',
-        en: '$'
+        ar: 'ل.س',
+        en: 'SYP'
       }
     },
     features: {
       ar: [
-        'محتوى فيديو لمدة 15 ساعة',
-        'استراتيجيات التوظيف الحديثة',
-        'أدوات تقييم الأداء',
-        'ورش عمل تفاعلية',
-        'استشارة شخصية'
+        'دروس فيديو عالية الجودة',
+        'تمارين عملية على الشبكات',
+        'شهادة إتمام الدورة',
+        'دعم فني عبر الإنترنت'
       ],
       en: [
-        '15 hours of video content',
-        'Modern recruitment strategies',
-        'Performance evaluation tools',
-        'Interactive workshops',
-        'Personal consultation'
+        'High-quality video lessons',
+        'Practical network exercises',
+        'Course completion certificate',
+        'Online technical support'
       ]
-    }
+    },
+    category: 'technology',
+  },
+  {
+    id: '2',
+    title: {
+      ar: 'أساسيات البرمجة بلغة بايثون',
+      en: 'Python Programming Basics'
+    },
+    description: {
+      ar: 'تعلم البرمجة بلغة بايثون من البداية حتى الاحتراف',
+      en: 'Learn Python programming from beginner to advanced'
+    },
+    duration: {
+      ar: '8 أسابيع',
+      en: '8 weeks'
+    },
+    level: {
+      ar: 'مبتدئ',
+      en: 'Beginner'
+    },
+    learners: 1800,
+    rating: 4.7,
+    image: 'https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=400',
+    gradient: 'from-green-500 to-green-700',
+    iconColor: 'text-green-400',
+    price: {
+      original: 180000,
+      discounted: 120000,
+      currency: {
+        ar: 'ل.س',
+        en: 'SYP'
+      }
+    },
+    features: {
+      ar: [
+        'شروحات تطبيقية مع أمثلة حية',
+        'مشاريع صغيرة لتثبيت التعلم',
+        'شهادة معتمدة',
+        'مساعدة ودعم من المحاضرين'
+      ],
+      en: [
+        'Practical tutorials with live examples',
+        'Small projects for practice',
+        'Certified certificate',
+        'Instructor support'
+      ]
+    },
+    category: 'programming',
+  },
+  {
+    id: '3',
+    title: {
+      ar: 'أمن المعلومات وحماية البيانات',
+      en: 'Information Security and Data Protection'
+    },
+    description: {
+      ar: 'تعرف على تقنيات حماية البيانات وأمن الشبكات',
+      en: 'Learn data protection and network security techniques'
+    },
+    duration: {
+      ar: '7 أسابيع',
+      en: '7 weeks'
+    },
+    level: {
+      ar: 'متوسط',
+      en: 'Intermediate'
+    },
+    learners: 900,
+    rating: 4.6,
+    image: 'https://images.pexels.com/photos/267614/pexels-photo-267614.jpeg?auto=compress&cs=tinysrgb&w=400',
+    gradient: 'from-red-500 to-red-700',
+    iconColor: 'text-red-400',
+    price: {
+      original: 200000,
+      discounted: 150000,
+      currency: {
+        ar: 'ل.س',
+        en: 'SYP'
+      }
+    },
+    features: {
+      ar: [
+        'مبادئ أمن المعلومات',
+        'تحليل التهديدات والهجمات',
+        'أساليب التشفير والحماية',
+        'ورش عمل عملية'
+      ],
+      en: [
+        'Information security principles',
+        'Threat and attack analysis',
+        'Encryption and protection methods',
+        'Hands-on workshops'
+      ]
+    },
+    category: 'cybersecurity',
+  },
+  {
+    id: '4',
+    title: {
+      ar: 'تطوير الويب باستخدام React',
+      en: 'Web Development with React'
+    },
+    description: {
+      ar: 'تعلم بناء واجهات المستخدم الحديثة باستخدام React',
+      en: 'Learn to build modern user interfaces with React'
+    },
+    duration: {
+      ar: '9 أسابيع',
+      en: '9 weeks'
+    },
+    level: {
+      ar: 'متوسط',
+      en: 'Intermediate'
+    },
+    learners: 1300,
+    rating: 4.8,
+    image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400',
+    gradient: 'from-purple-500 to-purple-700',
+    iconColor: 'text-purple-400',
+    price: {
+      original: 220000,
+      discounted: 170000,
+      currency: {
+        ar: 'ل.س',
+        en: 'SYP'
+      }
+    },
+    features: {
+      ar: [
+        'مشاريع تطبيقية',
+        'دروس فيديو مفصلة',
+        'شهادة معتمدة',
+        'تحديثات مستمرة'
+      ],
+      en: [
+        'Practical projects',
+        'Detailed video lessons',
+        'Certified certificate',
+        'Continuous updates'
+      ]
+    },
+    category: 'programming',
+  },
+  {
+    id: '5',
+    title: {
+      ar: 'إدارة قواعد البيانات مع MySQL',
+      en: 'Database Management with MySQL'
+    },
+    description: {
+      ar: 'تعلم كيفية تصميم وإدارة قواعد البيانات باستخدام MySQL',
+      en: 'Learn to design and manage databases using MySQL'
+    },
+    duration: {
+      ar: '6 أسابيع',
+      en: '6 weeks'
+    },
+    level: {
+      ar: 'مبتدئ',
+      en: 'Beginner'
+    },
+    learners: 1100,
+    rating: 4.4,
+    image: 'https://images.pexels.com/photos/267614/pexels-photo-267614.jpeg?auto=compress&cs=tinysrgb&w=400',
+    gradient: 'from-indigo-500 to-indigo-700',
+    iconColor: 'text-indigo-400',
+    price: {
+      original: 140000,
+      discounted: 90000,
+      currency: {
+        ar: 'ل.س',
+        en: 'SYP'
+      }
+    },
+    features: {
+      ar: [
+        'دروس نظرية وعملية',
+        'مشاريع قواعد بيانات',
+        'شهادة إتمام',
+        'دعم مباشر'
+      ],
+      en: [
+        'Theoretical and practical lessons',
+        'Database projects',
+        'Completion certificate',
+        'Live support'
+      ]
+    },
+    category: 'technology',
+  },
+  {
+    id: '6',
+    title: {
+      ar: 'أساسيات الذكاء الاصطناعي',
+      en: 'Introduction to Artificial Intelligence'
+    },
+    description: {
+      ar: 'تعرف على مفاهيم الذكاء الاصطناعي وتطبيقاته الحديثة',
+      en: 'Learn AI concepts and modern applications'
+    },
+    duration: {
+      ar: '8 أسابيع',
+      en: '8 weeks'
+    },
+    level: {
+      ar: 'متوسط',
+      en: 'Intermediate'
+    },
+    learners: 950,
+    rating: 4.5,
+    image: 'https://images.pexels.com/photos/1181355/pexels-photo-1181355.jpeg?auto=compress&cs=tinysrgb&w=400',
+    gradient: 'from-yellow-500 to-yellow-700',
+    iconColor: 'text-yellow-400',
+    price: {
+      original: 210000,
+      discounted: 160000,
+      currency: {
+        ar: 'ل.س',
+        en: 'SYP'
+      }
+    },
+    features: {
+      ar: [
+        'مبادئ الذكاء الاصطناعي',
+        'مشاريع تطبيقية',
+        'شهادة معتمدة',
+        'دعم فني'
+      ],
+      en: [
+        'AI fundamentals',
+        'Applied projects',
+        'Certified certificate',
+        'Technical support'
+      ]
+    },
+    category: 'technology',
   }
 ];
+
 
 interface CourseShowcaseProps {
   language?: 'ar' | 'en';
@@ -312,7 +403,8 @@ const CourseShowcase: React.FC<CourseShowcaseProps> = ({ language = 'ar' }) => {
               className={`absolute ${isArabic ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-4 hover:bg-gray-50 transition-all duration-300 hover:scale-110 group`}
               disabled={totalPages <= 1}
             >
-              <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-teal-600 transition-colors" />
+              
+              <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-teal-600 transition-colors" />
             </button>
             
             <button
@@ -320,7 +412,7 @@ const CourseShowcase: React.FC<CourseShowcaseProps> = ({ language = 'ar' }) => {
               className={`absolute ${isArabic ? 'right-0' : 'left-0'} top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-4 hover:bg-gray-50 transition-all duration-300 hover:scale-110 group`}
               disabled={totalPages <= 1}
             >
-              <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-teal-600 transition-colors" />
+              <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-teal-600 transition-colors" />
             </button>
 
             {/* Courses Grid */}

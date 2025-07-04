@@ -5,10 +5,13 @@ import { UserPreferencesForm } from '../recommendation system/UserPreferencesFor
 import { RecommendationResults } from '../recommendation system/RecommendationResults';
 import img1 from '../../assets/logo/22.png'
 import {  Code, Database, Shield, Cloud,  Brain } from 'lucide-react';
-
+import { useLanguage } from '../../contexts/LanguageContext';
+import translations from '../../data/translations';
 type AppState = 'form' | 'results' | 'loading';
 
 function UI() {
+   const { language,  } = useLanguage();
+  const t = translations[language];
   const [state, setState] = useState<AppState>('form');
   const [recommendations, setRecommendations] = useState<Course[]>([]);
   const [engine] = useState(() => new RecommendationEngine());
@@ -64,10 +67,10 @@ function UI() {
                 <Brain className="w-10 h-10 text-white animate-spin" />
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                جاري تحليل تفضيلاتك التقنية...
+                {t.recomndition.analyzing}
               </h2>
               <p className="text-gray-600 mb-8">
-                نستخدم الذكاء الاصطناعي للبحث عن أفضل كورسات تكنولوجيا المعلومات المناسبة لك
+                {t.recomndition.analyzingDescription}
               </p>
               
               {/* Loading Animation */}
@@ -83,15 +86,15 @@ function UI() {
               <div className="text-sm text-gray-500 space-y-2">
                 <div className="flex items-center justify-center">
                   <Code className="w-4 h-4 mr-2 text-blue-500" />
-                  <span>تحليل التخصص التقني...</span>
+                  <span>  {t.recomndition.analyzingStep1}</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Database className="w-4 h-4 mr-2 text-green-500" />
-                  <span>البحث في قاعدة بيانات الكورسات...</span>
+                  <span>  {t.recomndition.analyzingStep2}  </span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Brain className="w-4 h-4 mr-2 text-purple-500" />
-                  <span>حساب درجات التوافق...</span>
+                  <span>  {t.recomndition.analyzingStep3}</span>
                 </div>
               </div>
             </div>
@@ -126,15 +129,14 @@ function UI() {
                 </div>
                 
                 <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  اكتشف مسارك في
+                  {t.recomndition.heroTitle}
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
-                    تكنولوجيا المعلومات
+                    {t.recomndition.infotecnology}
                   </span>
                 </h1>
                 
                 <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
-                  نظام توصية ذكي متخصص في مجال تكنولوجيا المعلومات يحلل تخصصك واهتماماتك التقنية 
-                  ليقترح عليك أفضل الكورسات في البرمجة، الذكاء الاصطناعي، الأمن السيبراني، والمزيد
+                  {t.recomndition.heroSubtitle}
                 </p>
 
                 {/* Tech Features */}
@@ -143,32 +145,32 @@ function UI() {
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                       <Code className="w-6 h-6 text-blue-600" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">البرمجة والتطوير</h3>
-                    <p className="text-gray-600 text-sm">كورسات شاملة في جميع لغات البرمجة</p>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{t.recomndition.programming}</h3>
+                    <p className="text-gray-600 text-sm">{t.recomndition.programmingDesc}</p>
                   </div>
                   
                   <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4">
                       <Brain className="w-6 h-6 text-purple-600" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">الذكاء الاصطناعي</h3>
-                    <p className="text-gray-600 text-sm">تعلم أحدث تقنيات الذكاء الاصطناعي</p>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2"> {t.recomndition.ai}</h3>
+                    <p className="text-gray-600 text-sm">    {t.recomndition.aiDesc}</p>
                   </div>
                   
                   <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full mb-4">
                       <Shield className="w-6 h-6 text-red-600" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">الأمن السيبراني</h3>
-                    <p className="text-gray-600 text-sm">حماية الأنظمة والشبكات</p>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{t.recomndition.cyber} </h3>
+                    <p className="text-gray-600 text-sm"> {t.recomndition.cyberDesc} </p>
                   </div>
                   
                   <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
                       <Cloud className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">الحوسبة السحابية</h3>
-                    <p className="text-gray-600 text-sm">AWS، Azure، وGoogle Cloud</p>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{t.recomndition.cyber} </h3>
+                    <p className="text-gray-600 text-sm">{t.recomndition.cyberDesc}</p>
                   </div>
                 </div>
 
@@ -176,15 +178,15 @@ function UI() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                    <div className="text-gray-600">كورس تقني متخصص</div>
+                    <div className="text-gray-600">{t.recomndition.statCourses}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-purple-600 mb-2">50,000+</div>
-                    <div className="text-gray-600">مطور ومتخصص</div>
+                    <div className="text-gray-600"> {t.recomndition.statUsers}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
-                    <div className="text-gray-600">معدل رضا الطلاب</div>
+                    <div className="text-gray-600">  {t.recomndition.statSatisfaction}</div>
                   </div>
                 </div>
               </div>

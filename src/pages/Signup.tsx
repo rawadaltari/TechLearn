@@ -18,12 +18,13 @@ const Signup: React.FC = () => {
     username: "",
     mobileNumber: "",
     birthDate: "",
-    type: "Student", // Student | Teacher | Admin
+    type: "Student",
     terms: false,
   });
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,14 +39,13 @@ const Signup: React.FC = () => {
       mobileNumber: formData.mobileNumber,
       birthDate: formData.birthDate,
       type: formData.type,
-      roles: [formData.type], // أرسل الدور كمصفوفة لأن الـ API يتوقعه
+      roles: [formData.type],
     };
-
-    console.log("🚀 Payload:", payload);
 
     try {
       setLoading(true);
       setMessage("");
+      setFieldErrors({});
 
       const response = await axios.post(
         "https://raghadsvu-001-site1.jtempurl.com/api/Users/signup",
@@ -57,20 +57,23 @@ const Signup: React.FC = () => {
           },
         }
       );
-
-      console.log("✅ Success:", response.data);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", response.data.id);
       setMessage(t.signupPage.successMessage || "تم التسجيل بنجاح");
       navigate("/login");
     } catch (error: any) {
-      console.error("❌ Error:", error);
-
-      // إذا فيه رد من الـ API فيه تفاصيل الخطأ أظهرها
       if (error.response) {
-        console.log("API Error Response:", error.response.data);
+        const data = error.response.data;
+        if (data.errors) {
+          // مثال: { Email: ["هذا الحقل مطلوب"] }
+          const newErrors: { [key: string]: string } = {};
+          Object.keys(data.errors).forEach((field) => {
+            newErrors[field] = data.errors[field].join(", ");
+          });
+          setFieldErrors(newErrors);
+        }
         const backendMessage =
-          error.response.data.message ||
-          error.response.data.title ||
-          "فشل في التسجيل، تحقق من البيانات المدخلة.";
+          data.message || data.title || "فشل في التسجيل.";
         setMessage(backendMessage);
       } else {
         setMessage("تعذر الاتصال بالخادم. حاول لاحقًا.");
@@ -106,13 +109,9 @@ const Signup: React.FC = () => {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
-            {/* First & Last Name */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label
-                  htmlFor="firstName"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
                   {t.signupPage.firstName}
                 </label>
                 <input
@@ -127,12 +126,13 @@ const Signup: React.FC = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                 />
+                {fieldErrors.FirstName && (
+                  <p className="text-red-500 text-xs mt-1">{fieldErrors.FirstName}</p>
+                )}
               </div>
+
               <div>
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
                   {t.signupPage.lastName}
                 </label>
                 <input
@@ -147,15 +147,14 @@ const Signup: React.FC = () => {
                   value={formData.lastName}
                   onChange={handleChange}
                 />
+                {fieldErrors.LastName && (
+                  <p className="text-red-500 text-xs mt-1">{fieldErrors.LastName}</p>
+                )}
               </div>
             </div>
 
-            {/* Email */}
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.email}
               </label>
               <input
@@ -170,14 +169,13 @@ const Signup: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
+              {fieldErrors.Email && (
+                <p className="text-red-500 text-xs mt-1">{fieldErrors.Email}</p>
+              )}
             </div>
 
-            {/* Username */}
             <div>
-              <label
-                htmlFor="username"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.username}
               </label>
               <input
@@ -188,18 +186,17 @@ const Signup: React.FC = () => {
                 className={`appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm ${
                   isRTL ? "text-right" : "text-left"
                 }`}
-                placeholder={t.signupPage.usernamePlaceholder || "اسم المستخدم"}
+                placeholder={t.signupPage.usernamePlaceholder}
                 value={formData.username}
                 onChange={handleChange}
               />
+              {fieldErrors.Username && (
+                <p className="text-red-500 text-xs mt-1">{fieldErrors.Username}</p>
+              )}
             </div>
 
-            {/* Mobile */}
             <div>
-              <label
-                htmlFor="mobileNumber"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.mobile}
               </label>
               <input
@@ -213,14 +210,13 @@ const Signup: React.FC = () => {
                 value={formData.mobileNumber}
                 onChange={handleChange}
               />
+              {fieldErrors.MobileNumber && (
+                <p className="text-red-500 text-xs mt-1">{fieldErrors.MobileNumber}</p>
+              )}
             </div>
 
-            {/* Password */}
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.password}
               </label>
               <input
@@ -235,14 +231,13 @@ const Signup: React.FC = () => {
                 value={formData.password}
                 onChange={handleChange}
               />
+              {fieldErrors.Password && (
+                <p className="text-red-500 text-xs mt-1">{fieldErrors.Password}</p>
+              )}
             </div>
 
-            {/* Confirm Password */}
             <div>
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.confirmPassword}
               </label>
               <input
@@ -257,14 +252,13 @@ const Signup: React.FC = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
               />
+              {fieldErrors.ConfirmPassword && (
+                <p className="text-red-500 text-xs mt-1">{fieldErrors.ConfirmPassword}</p>
+              )}
             </div>
 
-            {/* Birth Date */}
             <div>
-              <label
-                htmlFor="birthDate"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="birthDate" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.birthDate}
               </label>
               <input
@@ -277,14 +271,13 @@ const Signup: React.FC = () => {
                 value={formData.birthDate}
                 onChange={handleChange}
               />
+              {fieldErrors.BirthDate && (
+                <p className="text-red-500 text-xs mt-1">{fieldErrors.BirthDate}</p>
+              )}
             </div>
 
-            {/* Role */}
             <div>
-              <label
-                htmlFor="type"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="type" className="block text-sm font-medium text-gray-700">
                 {t.signupPage.role}
               </label>
               <select
@@ -304,7 +297,6 @@ const Signup: React.FC = () => {
             </div>
           </div>
 
-          {/* Terms */}
           <div className="flex items-center">
             <input
               id="terms"
@@ -317,15 +309,12 @@ const Signup: React.FC = () => {
             />
             <label
               htmlFor="terms"
-              className={`${
-                isRTL ? "mr-2" : "ml-2"
-              } block text-sm text-gray-900`}
+              className={`${isRTL ? "mr-2" : "ml-2"} block text-sm text-gray-900`}
             >
               {t.signupPage.terms}
             </label>
           </div>
 
-          {/* Submit */}
           <div>
             <button
               type="submit"
@@ -336,20 +325,13 @@ const Signup: React.FC = () => {
             </button>
           </div>
 
-          {/* API Message */}
           {message && (
             <div className="text-center text-red-600 text-sm">{message}</div>
           )}
 
-          {/* Login Link */}
           <div className="text-center text-sm">
-            <span className="text-gray-600">
-              {t.signupPage.alreadyHaveAccount}
-            </span>{" "}
-            <Link
-              to="/login"
-              className="font-medium text-teal-600 hover:text-teal-500"
-            >
+            <span className="text-gray-600">{t.signupPage.alreadyHaveAccount}</span>{" "}
+            <Link to="/login" className="font-medium text-teal-600 hover:text-teal-500">
               {t.signupPage.login}
             </Link>
           </div>

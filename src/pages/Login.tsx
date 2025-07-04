@@ -33,7 +33,7 @@ const Login: React.FC = () => {
         'user',
         JSON.stringify({ role: 'admin', email: formData.username })
       );
-  
+      
       navigate('/Admin'); // غير المسار حسب اسم واجهة المدير لديك
       setLoading(false);
       return;

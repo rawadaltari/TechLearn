@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { 
   Plus, 
   BookOpen, 
@@ -12,36 +12,40 @@ import {
 } from 'lucide-react';
 
 import { useAuth } from '.././contexts/AuthContext';
-
+import { useLanguage } from '../contexts/LanguageContext';
+import translations from "../data/translations";
+import AddStudent from './Teacher component/AddStudent';
+import AddCourse from './Teacher component/AddCourseForm';
 export const TeacherDashboard: React.FC = () => {
- 
+  const { language } = useLanguage();
+  const t = translations[language];
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
 
   const stats = [
     { 
-      label: 'teacher.totalCourses', 
+      label: t.TeacherDashboard.total, 
       value: '12', 
       icon: BookOpen, 
       color: 'text-blue-600',
       bgColor: 'bg-blue-100' 
     },
     { 
-      label: 'teacher.totalStudents', 
+      label: t.TeacherDashboard.totalStudents, 
       value: '248', 
       icon: Users, 
       color: 'text-green-600',
       bgColor: 'bg-green-100' 
     },
     { 
-      label: 'teacher.totalVideos', 
+      label: t.TeacherDashboard.totalVideos, 
       value: '67', 
       icon: Video, 
       color: 'text-purple-600',
       bgColor: 'bg-purple-100' 
     },
     { 
-      label: 'teacher.analytics', 
+      label: t.TeacherDashboard.analytics, 
       value: '94%', 
       icon: TrendingUp, 
       color: 'text-orange-600',
@@ -51,25 +55,25 @@ export const TeacherDashboard: React.FC = () => {
 
   const quickActions = [
     { 
-      label: 'teacher.addCourse', 
+      label: t.TeacherDashboard.addCourse, 
       icon: Plus, 
-      action: () => setActiveTab('add-course'),
+      action: () => setActiveTab('Add-CourseForm'),
       color: 'bg-teal-500 hover:bg-teal-600' 
     },
     { 
-      label: 'teacher.addStudent', 
+      label: t.TeacherDashboard.addStudent, 
       icon: User, 
       action: () => setActiveTab('add-student'),
       color: 'bg-blue-500 hover:bg-blue-600' 
     },
     { 
-      label: 'teacher.uploadVideo', 
+      label: t.TeacherDashboard.uploadVideo, 
       icon: Video, 
       action: () => setActiveTab('upload-video'),
       color: 'bg-purple-500 hover:bg-purple-600' 
     },
     { 
-      label: 'teacher.createQuiz', 
+      label: t.TeacherDashboard.createQuiz, 
       icon: FileText, 
       action: () => setActiveTab('create-quiz'),
       color: 'bg-orange-500 hover:bg-orange-600' 
@@ -111,10 +115,10 @@ export const TeacherDashboard: React.FC = () => {
       {/* Welcome Section */}
       <div className="bg-gradient-to-r from-teal-500 to-blue-600 rounded-2xl p-6 text-white">
         <h1 className="text-3xl font-bold mb-2">
-          {'common.welcome'}, {user?.firstName}!
+          {t.TeacherDashboard.commonwelcome}, {user?.firstName}!
         </h1>
         <p className="text-teal-100 text-lg">
-          {'teacher.welcome'}
+          {t.TeacherDashboard.teacherwelcome}
         </p>
       </div>
 
@@ -137,7 +141,7 @@ export const TeacherDashboard: React.FC = () => {
 
       {/* Quick Actions */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">إجراءات سريعة</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4"> {t.TeacherDashboard.Quickmeasures}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {quickActions.map((action, index) => (
             <button
@@ -155,7 +159,7 @@ export const TeacherDashboard: React.FC = () => {
       {/* Recent Courses */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-gray-900">{'teacher.myCourses'}</h2>
+          <h2 className="text-xl font-bold text-gray-900">{t.TeacherDashboard.mycourse}</h2>
           <button className="text-teal-600 hover:text-teal-700 font-medium">
             عرض الكل
           </button>
@@ -191,181 +195,6 @@ export const TeacherDashboard: React.FC = () => {
     </div>
   );
 
-  const renderAddCourse = () => (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">{'teacher.addCourse'}</h2>
-      <form className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.title'} (العربية)
-            </label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="أدخل عنوان الكورس"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.title'} (English)
-            </label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="Enter course title"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.description'} (العربية)
-            </label>
-            <textarea
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="أدخل وصف الكورس"
-            ></textarea>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.description'} (English)
-            </label>
-            <textarea
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="Enter course description"
-            ></textarea>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.level'}
-            </label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500">
-              <option>مبتدئ</option>
-              <option>متوسط</option>
-              <option>متقدم</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.duration'}
-            </label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="مثال: 40 ساعة"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {'course.thumbnail'}
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-            />
-          </div>
-        </div>
-
-        <div className="flex justify-end space-x-4 space-x-reverse">
-          <button
-            type="button"
-            onClick={() => setActiveTab('overview')}
-            className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            {'common.cancel'}
-          </button>
-          <button
-            type="submit"
-            className="px-6 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors"
-          >
-            {'course.create'}
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-
-  const renderAddStudent = () => (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">{'teacher.addStudent'}</h2>
-      <form className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              الاسم الأول
-            </label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="أدخل الاسم الأول"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              الاسم الأخير
-            </label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="أدخل الاسم الأخير"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            البريد الإلكتروني
-          </label>
-          <input
-            type="email"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-            placeholder="أدخل البريد الإلكتروني"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            الكورسات المسجل بها
-          </label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {recentCourses.map((course) => (
-              <label key={course.id} className="flex items-center space-x-3 space-x-reverse">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
-                />
-                <span className="text-sm text-gray-700">{course.title}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-end space-x-4 space-x-reverse">
-          <button
-            type="button"
-            onClick={() => setActiveTab('overview')}
-            className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            {'common.cancel'}
-          </button>
-          <button
-            type="submit"
-            className="px-6 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors"
-          >
-            إضافة طالب
-          </button>
-        </div>
-      </form>
-    </div>
-  );
 
   const renderUploadVideo = () => (
     <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
@@ -607,11 +436,11 @@ export const TeacherDashboard: React.FC = () => {
   );
 
   const tabs = [
-    { id: 'overview', label: 'نظرة عامة', icon: BarChart3 },
-    { id: 'add-course', label: 'teacher.addCourse', icon: Plus },
-    { id: 'add-student', label: 'teacher.addStudent', icon: User },
-    { id: 'upload-video', label: 'teacher.uploadVideo', icon: Video },
-    { id: 'create-quiz', label: 'teacher.createQuiz', icon: FileText },
+    { id: 'overview', label: t.TeacherDashboard.Overview, icon: BarChart3 },
+    { id: 'Add-CourseForm', label: t.TeacherDashboard.addCourse, icon: Plus },
+    { id: 'add-student', label: t.TeacherDashboard.addStudent, icon: User },
+    { id: 'upload-video', label: t.TeacherDashboard.uploadVideo, icon: Video },
+    { id: 'create-quiz', label: t.TeacherDashboard.createQuiz, icon: FileText },
   ];
 
   return (
@@ -641,8 +470,8 @@ export const TeacherDashboard: React.FC = () => {
 
         {/* Tab Content */}
         {activeTab === 'overview' && renderOverview()}
-        {activeTab === 'add-course' && renderAddCourse()}
-        {activeTab === 'add-student' && renderAddStudent()}
+        {activeTab === 'Add-CourseForm' && <AddCourse setActiveTab={setActiveTab} />}
+        {activeTab === 'add-student' && <AddStudent setActiveTab={setActiveTab} />}
         {activeTab === 'upload-video' && renderUploadVideo()}
         {activeTab === 'create-quiz' && renderCreateQuiz()}
       </div>

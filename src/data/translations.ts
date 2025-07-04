@@ -1,5 +1,4 @@
 
-
 const translations = {
   ar: {
     discover: 'اكتشف',
@@ -26,6 +25,21 @@ const translations = {
       rememberMe: 'تذكرني',
       forgotPassword: 'نسيت كلمة المرور؟',
       signIn: 'تسجيل الدخول',
+    },
+    TeacherDashboard:{
+      total:'كل الكورسات',
+      totalStudents:'كل الطلاب',
+      totalVideos:'كل الفيديوهات',
+      analytics:"معدل",
+      commonwelcome:'مرحبا بك في لوحة تحكم المعلم',
+      teacherwelcome:'مرحبا',
+      uploadVideo:'رفع فيديو',
+      createQuiz:'انشاء اختبار',
+      addStudent:'اضافة طالب',
+      addCourse:'اضافة كورس',
+      Quickmeasures:"أجراءات سريعة",
+      Overview:'نظرة عامة',
+      mycourse:'كورساتي ',
     },
     
     hero: {
@@ -107,8 +121,8 @@ const translations = {
       categories: {
         webdevelopment: 'تطوير المواقع',
         technology: 'التكنولوجيا',
-        programing: 'البرمجة',
-        ciybersecyrity: ' أمن الشبكات'
+        programming: 'البرمجة',
+        cybersecurity: ' أمن الشبكات'
       },
       enroll: 'سجل الآن'
     },
@@ -193,6 +207,60 @@ const translations = {
         subtitle:"فريق الدعم متاح 24/7 لمساعدتك في أي استفسار"
       }
     },
+    recomndition:{
+      heroTitle: 'اكتشف مسارك في',
+      infotecnology:'تكنولوجيا المعلومات',
+    heroSubtitle: 'نظام توصية ذكي متخصص في مجال تكنولوجيا المعلومات يحلل تخصصك واهتماماتك التقنية ليقترح عليك أفضل الكورسات في البرمجة، الذكاء الاصطناعي، الأمن السيبراني، والمزيد',
+    analyzing: 'جاري تحليل تفضيلاتك التقنية...',
+    analyzingDescription: 'نستخدم الذكاء الاصطناعي للبحث عن أفضل كورسات تكنولوجيا المعلومات المناسبة لك',
+    analyzingStep1: 'تحليل التخصص التقني...',
+    analyzingStep2: 'البحث في قاعدة بيانات الكورسات...',
+    analyzingStep3: 'حساب درجات التوافق...',
+    noCourses: 'لم نجد كورسات مناسبة لتفضيلاتك. جرب تعديل الخيارات.',
+    errorFetching: 'حدث خطأ في جلب التوصيات. يرجى المحاولة مرة أخرى.',
+    refreshError: 'حدث خطأ في تحديث النتائج.',
+    programming: 'البرمجة والتطوير',
+    ai: 'الذكاء الاصطناعي',
+    cyber: 'الأمن السيبراني',
+    cloud: 'الحوسبة السحابية',
+    programmingDesc: 'كورسات شاملة في جميع لغات البرمجة',
+    aiDesc: 'تعلم أحدث تقنيات الذكاء الاصطناعي',
+    cyberDesc: 'حماية الأنظمة والشبكات',
+    cloudDesc: 'AWS، Azure، وGoogle Cloud',
+    statCourses: 'كورس تقني متخصص',
+    statUsers: 'مطور ومتخصص',
+    statSatisfaction: 'معدل رضا الطلاب',
+    },
+    courseCatalog: {
+      title: 'كتالوج الكورسات',
+      description: 'تصفح جميع الكورسات المتاحة وابحث عن ما يناسبك حسب المجال أو المستوى.',
+      searchPlaceholder: 'ابحث عن كورس...',
+      filterByCategory: 'تصفية حسب الفئة',
+      filterByLevel: 'تصفية حسب المستوى',
+      allCourses: 'جميع الكورسات',
+      noCoursesFound: 'لم يتم العثور على كورسات مطابقة.',
+      enrollNow: 'سجل الآن',
+      category: 'الفئة',
+      level: 'المستوى',
+      beginner: 'مبتدئ',
+      intermediate: 'متوسط',
+      advanced: 'متقدم',
+      duration: 'المدة',
+      lessons: 'عدد الدروس',
+      students: 'عدد الطلاب',
+      rating: 'التقييم',
+      instructor: 'المدرب',
+      backToCatalog: 'العودة إلى الكتالوج'
+    },
+    payment: {
+      payNow: 'ادفع الآن',
+      cardPlaceholder: 'أدخل رقم البطاقة',
+      card: 'رقم البطاقة',
+      emailPlaceholder: 'أدخل البريد الإلكتروني',
+      email: 'البريد الإلكتروني',
+      name: 'اسم حامل البطاقة',
+      namePlaceholder: 'أدخل اسم حامل البطاقة',
+    },
   },
   
   en: {
@@ -252,10 +320,25 @@ const translations = {
       mobilePlaceholder:"mobilePlaceholder",
 
     },
+    TeacherDashboard:{
+      total: 'total course',
+      totalStudents:'totalStudents',
+      analytics:'analytics',
+      totalVideos:'totalVideos',
+      teacherwelcome:'welcome in dashboard teaher',
+      commonwelcome:'welcome teacher',
+      createQuiz:'createQuiz',
+      addStudent:'addStudent',
+      addCourse:'addCourse',
+      uploadVideo:'uploadVideo',
+      Quickmeasures:'Quick measures',
+      Overview:'Overview',
+      mycourse:'My course',
+    },
     aboutPage: {
       title: 'About TechLearn',
       subtitle: 'Towards Better Arabic Education',
-      description: 'Edraak is an Arabic educational platform that aims to provide high-quality, free education for everyone. We believe that education is a right for all and strive to empower Arab youth through knowledge and skills.',
+      description: 'Teach Learn is an Arabic educational platform that aims to provide high-quality, free education for everyone. We believe that education is a right for all and strive to empower Arab youth through knowledge and skills.',
       vision: {
         title: 'Our Vision',
         description: 'To be the leading educational platform in the Arab world, providing quality education that contributes to community development and sustainable development.'
@@ -341,8 +424,8 @@ const translations = {
       categories: {
         webdevelopment: 'web development',
         technology: 'Technology',
-        programing: 'programing',
-        ciybersecyrity: 'ciyber secyrity'
+        programming: 'programing',
+        cybersecurity: 'ciyber secyrity'
       },
       enroll: 'Enroll Now'
     },
@@ -385,7 +468,61 @@ const translations = {
         title:"Do you need additional help?",
         subtitle:"Our support team is available 24/24 to assist you with any inquiries."
       }
-    }
+    },
+    recomndition:{
+      heroTitle: 'Discover Your Path in',
+      infotecnology:'information technology',
+      heroSubtitle: 'An intelligent recommendation system specialized in IT that analyzes your major and tech interests to recommend the best courses in programming, AI, cybersecurity, and more.',
+      analyzing: 'Analyzing your tech preferences...',
+      analyzingDescription: 'We use AI to find the best IT courses for you',
+      analyzingStep1: 'Analyzing technical specialization...',
+      analyzingStep2: 'Searching the courses database...',
+      analyzingStep3: 'Calculating match scores...',
+      noCourses: 'We could not find suitable courses. Please adjust your options.',
+      errorFetching: 'An error occurred while fetching recommendations. Please try again.',
+      refreshError: 'An error occurred while refreshing results.',
+      programming: 'Programming & Development',
+      ai: 'Artificial Intelligence',
+      cyber: 'Cybersecurity',
+      cloud: 'Cloud Computing',
+      programmingDesc: 'Comprehensive courses in all programming languages',
+      aiDesc: 'Learn the latest AI technologies',
+      cyberDesc: 'Protect systems and networks',
+      cloudDesc: 'AWS, Azure, and Google Cloud',
+      statCourses: 'Specialized tech courses',
+      statUsers: 'Developers & specialists',
+      statSatisfaction: 'Student satisfaction rate',
+    },
+    courseCatalog: {
+      title: 'Course Catalog',
+      description: 'Browse all available courses and find what suits you by category or level.',
+      searchPlaceholder: 'Search for a course...',
+      filterByCategory: 'Filter by Category',
+      filterByLevel: 'Filter by Level',
+      allCourses: 'All Courses',
+      noCoursesFound: 'No matching courses found.',
+      enrollNow: 'Enroll Now',
+      category: 'Category',
+      level: 'Level',
+      beginner: 'Beginner',
+      intermediate: 'Intermediate',
+      advanced: 'Advanced',
+      duration: 'Duration',
+      lessons: 'Lessons',
+      students: 'Students',
+      rating: 'Rating',
+      instructor: 'Instructor',
+      backToCatalog: 'Back to Catalog'
+    },
+    payment: {
+      payNow: 'Pay Now',
+      cardPlaceholder: 'Enter card number',
+      card: 'Card Number',
+      emailPlaceholder: 'Enter email',
+      email: 'Email',
+      name: 'Cardholder Name',
+      namePlaceholder: 'Enter cardholder name',
+    },
     
   }
 };

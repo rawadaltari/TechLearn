@@ -47,13 +47,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         username: email,
         password: password,
       });
-
+  
       const data = response.data;
       console.log('Login API response:', data);
-
+  
       const personType = (data.personType || '').toLowerCase();
       console.log('personType from API:', personType);
-
+  
       let role: 'teacher' | 'student';
       if (personType === 'teacher') {
         role = 'teacher';
@@ -64,7 +64,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsLoading(false);
         return false;
       }
-
+  
       const loggedInUser: User = {
         id: data.id,
         firstName: data.firstName,
@@ -73,9 +73,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role,
         createdAt: new Date(),
       };
-
+  
       setUser(loggedInUser);
       localStorage.setItem('user', JSON.stringify(loggedInUser));
+  
+      // ✅ أضف هذه
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.id);
+  
       return true;
     } catch (error) {
       console.error('Login failed:', error);
@@ -84,6 +89,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsLoading(false);
     }
   };
+  
 
   const register = async (userData: RegisterData): Promise<boolean> => {
     setIsLoading(true);

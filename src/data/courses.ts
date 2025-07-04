@@ -71,7 +71,7 @@ export const courses: Course[] = [
       ar: 'أساسيات البيانات الضخمة',
       en: 'Big Data Fundamentals'
     },
-    category: 'technology',
+    category: 'webdevelopment',
     instructor: 'Dr. Omar Khalid',
     rating: 4.6,
     reviewCount: 295,
@@ -84,7 +84,7 @@ export const courses: Course[] = [
       ar: 'الأمن السيبراني',
       en: 'Cybersecurity'
     },
-    category: 'technology',
+    category: 'webdevelopment',
     instructor: 'Prof. Fatima Rahman',
     rating: 4.9,
     reviewCount: 187,
@@ -110,7 +110,7 @@ export const courses: Course[] = [
       ar: 'تحليل البيانات باستخدام بايثون',
       en: 'Data Analysis with Python'
     },
-    category: 'technology',
+    category: 'webdevelopment',
     instructor: 'Prof. Amina Zaki',
     rating: 4.7,
     reviewCount: 250,
@@ -136,7 +136,7 @@ export const courses: Course[] = [
       ar: 'تطوير الألعاب باستخدام يونتي',
       en: 'Game Development with Unity'
     },
-    category: 'technology',
+    category: 'webdevelopment',
     instructor: 'Prof. Khaled Nabil',
     rating: 4.8,
     reviewCount: 150,
@@ -149,7 +149,7 @@ export const courses: Course[] = [
       ar: 'تطوير تطبيقات الأندرويد',
       en: 'Android App Development'
     },
-    category: 'technology',
+    category: 'webdevelopment',
     instructor: 'Dr. Layla Ahmed',
     rating: 4.9,
     reviewCount: 500,
@@ -162,7 +162,7 @@ export const courses: Course[] = [
       ar: 'تطوير تطبيقات iOS',
       en: 'iOS App Development'
     },
-    category: 'technology',
+    category: 'webdevelopment',
     instructor: 'Prof. Omar Khalid',
     rating: 4.7,
     reviewCount: 320,
@@ -175,7 +175,7 @@ export const courses: Course[] = [
       ar: 'أساسيات الشبكات',
       en: 'Networking Fundamentals'
     },
-    category: 'technology',
+    category: 'cybersecurity',
     instructor: 'Dr. Ahmed Samir',
     rating: 4.6,
     reviewCount: 280,
@@ -188,7 +188,7 @@ export const courses: Course[] = [
       ar: 'تطوير البرمجيات باستخدام Agile',
       en: 'Software Development with Agile'
     },
-    category: 'technology',
+    category: 'cybersecurity',
     instructor: 'Prof. Fatima Rahman',
     rating: 4.8,
     reviewCount: 220,
@@ -201,7 +201,7 @@ export const courses: Course[] = [
       ar: 'تطوير تطبيقات الويب باستخدام React',
       en: 'Web Development with React'
     },
-    category: 'technology',
+    category: 'cybersecurity',
     instructor: 'Dr. Hossam Farouk',
     rating: 4.9,
     reviewCount: 350,
@@ -240,7 +240,7 @@ export const courses: Course[] = [
       ar: 'تحليل البيانات باستخدام R',
       en: 'Data Analysis with R'
     },
-    category: 'technology',
+    category: 'programming',
     instructor: 'Prof. Khaled Nabil',
     rating: 4.6,
     reviewCount: 250,
@@ -253,7 +253,7 @@ export const courses: Course[] = [
       ar: 'تطوير البرمجيات باستخدام بايثون',
       en: 'Software Development with Python'
     },
-    category: 'technology',
+    category: 'programming',
     instructor: 'Dr. Layla Ahmed',
     rating: 4.9,
     reviewCount: 450,
@@ -266,7 +266,7 @@ export const courses: Course[] = [
       ar: 'أساسيات الذكاء الاصطناعي',
       en: 'Artificial Intelligence Basics'
     },
-    category: 'technology',
+    category: 'programming',
     instructor: 'Prof. Omar Khalid',
     rating: 4.8,
     reviewCount: 500,

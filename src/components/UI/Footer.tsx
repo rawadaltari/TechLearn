@@ -68,9 +68,9 @@ const Footer: React.FC = () => {
             </h3>
             <div className="mt-4 space-y-2">
               <p className="text-base text-gray-400">
-                <a href="mailto:info@edraak.org" className="flex items-center hover:text-teal-500 transition-colors">
+                <a href="mailto:info@TeachLearn.org" className="flex items-center hover:text-teal-500 transition-colors">
                   <Mail size={16} className="mr-2" />
-                  info@edraak.org
+                  info@teachlearn.org
                 </a>
               </p>
               <p className="text-base text-gray-400">
